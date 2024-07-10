@@ -6,7 +6,14 @@ Comparison operators: =, !=, >, <, >=, <=.
 LIKE operator searches for a specific pattern.
 BETWEEN operator matches values in a range.
 ORDER BY sorts data (ascending/descending).
+COUNT() returns the number of rows.
+MIN() returns the smallest value in a column.
+MAX() returns the largest value in a column.
+SUM() returns the total sum in a column.
+AVG() returns the average value in a column.
+GROUP BY groups the result using the common values in a column.
 
+  
 SELECT - choosing the items needed from the database
 FROM - particular place (column) 
 WHERE - setting a condition to choose items which correspond to the condition
@@ -50,3 +57,34 @@ So how does it work? Let’s see it in action:
 SELECT name, genre, stream, year
 FROM shows
 ORDER BY year;
+  
+MIN() and MAX() are exactly how they sound: they return the minimum and maximum value in a column, respectively.
+For example, this returns the smallest value in the plays column:
+SELECT MIN(plays)
+FROM playlist;
+This finds the most popular song in the table:
+SELECT title, artist, MAX(plays)
+FROM playlist;
+
+
+  
+The SUM() aggregate function takes a column and returns the total sum of the values in it.
+SELECT SUM(plays)
+FROM playlist;
+
+
+Use the AVG() function to calculate the average value of a column.
+SELECT AVG(plays)
+FROM playlist;
+
+
+The GROUP BY statement groups rows of data with the same values into buckets. It’s often used with aggregate functions to group the result by one or more columns:
+SELECT genre, COUNT(*) 
+FROM playlist 
+GROUP BY genre;
+What this does is we are grouping together all the different genres and displaying two columns: the genre and the count of that genre.
+It will look something like:
+genre	COUNT(*)
+Indie Rock	6
+R&B	8
+K-Pop	2
