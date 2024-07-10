@@ -1,0 +1,52 @@
+SELECT selects data FROM a database.
+SELECT * selects all the columns.
+DISTINCT returns unique values in a column.
+WHERE filters results based on a condition.
+Comparison operators: =, !=, >, <, >=, <=.
+LIKE operator searches for a specific pattern.
+BETWEEN operator matches values in a range.
+ORDER BY sorts data (ascending/descending).
+
+SELECT - choosing the items needed from the database
+FROM - particular place (column) 
+WHERE - setting a condition to choose items which correspond to the condition
+* - selecting all the columns 
+; - symbol indicating the end of the inquiry 
+
+example: 
+SELECT column1, column2, column3 
+FROM name-of-the-table; 
+or: 
+SELECT column1, column2, column3
+FROM name-of-the-table WHERE id > 6;
+or: 
+SELECT * 
+FROM name-of-the-table 
+WHERE name LIKE 'T%'; # T - indicates the first letter of the name of the variable we want to retrive.
+The % can be used in different ways:
+A% matches values that begin with letter 'A'.
+%z matches values that end with 'z'.
+%com% matches values that have 'com' in them
+
+
+= equal to
+!= not equal to
+> greater than
+< less than
+>= greater than or equal to
+<= less than or equal to
+
+  
+The BETWEEN operator is used in a WHERE clause to filter the result set within a certain range. The range must be separated by an AND keyword.
+For example, this query filters the result to only include shows between the years 2020 and 2025 (inclusive):
+SELECT *
+FROM shows
+WHERE year
+BETWEEN 2020 AND 2025;
+
+
+The ORDER BY statement sorts rows of data in ascending or descending order. By default, this command sorts the data in ascending order.
+So how does it work? Let’s see it in action:
+SELECT name, genre, stream, year
+FROM shows
+ORDER BY year;
